@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DevOps Hero: Terminal Quest</title>
+  <style>
+    body { background:#111; color:#0f0; font-family:monospace; padding:20px }
+    .mission { border:1px solid #0f0; padding:20px; margin-top:20px }
+    input, button { background:black; color:lime; border:1px solid lime; padding:5px; font-family:monospace }
+    .error { color: red; margin-top: 10px }
+    .success { color: #0f0; margin-top: 10px }
+  </style>
+</head>
+<body>
+  <h1>🧑‍💻 DevOps Hero: Terminal Quest</h1>
+  <div id="score">Score: 0</div>
+  <div><a href="/leaderboard" style="color: cyan;">🏅 View Leaderboard</a></div>
+  <div id="mission-container"></div>
+
+  <script>
+    const missions = {{ missions|tojson }};
+    let current = 0;
+
+    function renderMission() {
+      if (current >= missions.length) {
+        window.location.href = "/complete";
+        return;
+      }
+
+      const m = missions[current];
+      document.getElementById('mission-container').innerHTML = `
+        <div class="mission">
+          <h2>${m.title}</h2>
+          <p>${m.description}</p>
+          <input type="text" id="cmd" placeholder="Type command here" />
+          <button onclick="run()">Run</button>
+          <div id="out"></div>
+        </div>
+      `;
+    }
+
+    async function run() {
+      const cmd = document.getElementById('cmd').value.trim();
+      const res = await fetch('/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mission_id: missions[current].id, command: cmd })
+      });
+
+      const resp = await res.json();
+      document.getElementById('score').innerText = `Score: ${resp.score}`;
+
+      const out = document.getElementById('out');
+      if (resp.result === 'success') {
+        out.innerHTML = `<div class="success">${resp.message}</div>`;
+        setTimeout(() => { current++; renderMission(); }, 1500);
+      } else {
+        out.innerHTML = `<div class="error">${resp.message}</div>`;
+      }
+    }
+
+    renderMission();
+  </script>
+</body>
+</html>

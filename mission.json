@@ -1,0 +1,198 @@
+[
+  {
+    "id": 1,
+    "title": "Create a Directory",
+    "description": "Make a new folder named 'devops'",
+    "solution": "mkdir devops",
+    "points": 10
+  },
+  {
+    "id": 2,
+    "title": "Create a File",
+    "description": "Make a file named 'notes.txt'",
+    "solution": "touch notes.txt",
+    "points": 10
+  },
+  {
+    "id": 3,
+    "title": "List Files",
+    "description": "Show all hidden files too",
+    "solution": "ls -a",
+    "points": 10
+  },
+  {
+    "id": 4,
+    "title": "Show File Content",
+    "description": "View the content of 'notes.txt'",
+    "solution": "cat notes.txt",
+    "points": 10
+  },
+  {
+    "id": 5,
+    "title": "Copy File",
+    "description": "Copy 'notes.txt' to 'backup.txt'",
+    "solution": "cp notes.txt backup.txt",
+    "points": 10
+  },
+  {
+    "id": 6,
+    "title": "Make Script Executable",
+    "description": "Make 'deploy.sh' executable",
+    "solution": "chmod +x deploy.sh",
+    "points": 10
+  },
+  {
+    "id": 7,
+    "title": "Change Owner",
+    "description": "Set owner of 'app.py' to 'ubuntu'",
+    "solution": "chown ubuntu app.py",
+    "points": 10
+  },
+  {
+    "id": 8,
+    "title": "View Permissions",
+    "description": "Check permissions of 'app.py'",
+    "solution": "ls -l app.py",
+    "points": 10
+  },
+  {
+    "id": 9,
+    "title": "Remove Write",
+    "description": "Remove write access from 'config.json'",
+    "solution": "chmod -w config.json",
+    "points": 10
+  },
+  {
+    "id": 10,
+    "title": "Set Read for All",
+    "description": "Give read to everyone for 'report.txt'",
+    "solution": "chmod a+r report.txt",
+    "points": 10
+  },
+  {
+    "id": 11,
+    "title": "Restart Nginx",
+    "description": "Restart the nginx service",
+    "solution": "sudo systemctl restart nginx",
+    "points": 10
+  },
+  {
+    "id": 12,
+    "title": "Check Status",
+    "description": "Check nginx status",
+    "solution": "systemctl status nginx",
+    "points": 10
+  },
+  {
+    "id": 13,
+    "title": "View Running Procs",
+    "description": "Show top running processes",
+    "solution": "top",
+    "points": 10
+  },
+  {
+    "id": 14,
+    "title": "Kill a PID",
+    "description": "Kill process ID 1234",
+    "solution": "kill 1234",
+    "points": 10
+  },
+  {
+    "id": 15,
+    "title": "Check Logs",
+    "description": "View last 10 system logs",
+    "solution": "tail -n 10 /var/log/syslog",
+    "points": 10
+  },
+  {
+    "id": 16,
+    "title": "Ping Google",
+    "description": "Ping 3 times",
+    "solution": "ping -c 3 google.com",
+    "points": 10
+  },
+  {
+    "id": 17,
+    "title": "View IP",
+    "description": "Show system IP address",
+    "solution": "ip a",
+    "points": 10
+  },
+  {
+    "id": 18,
+    "title": "Check Ports",
+    "description": "View listening ports",
+    "solution": "netstat -tuln",
+    "points": 10
+  },
+  {
+    "id": 19,
+    "title": "DNS Lookup",
+    "description": "Check IP of github.com",
+    "solution": "nslookup github.com",
+    "points": 10
+  },
+  {
+    "id": 20,
+    "title": "Curl Webpage",
+    "description": "Get page of example.com",
+    "solution": "curl example.com",
+    "points": 10
+  },
+  {
+    "id": 21,
+    "title": "Check Disk Usage",
+    "description": "Human readable disk usage",
+    "solution": "df -h",
+    "points": 10
+  },
+  {
+    "id": 22,
+    "title": "Check Memory",
+    "description": "View RAM usage",
+    "solution": "free -m",
+    "points": 10
+  },
+  {
+    "id": 23,
+    "title": "Disk Space Directory",
+    "description": "Check folder size",
+    "solution": "du -sh *",
+    "points": 10
+  },
+  {
+    "id": 24,
+    "title": "Uptime",
+    "description": "Show how long system is running",
+    "solution": "uptime",
+    "points": 10
+  },
+  {
+    "id": 25,
+    "title": "Who is Logged In",
+    "description": "Show logged-in users",
+    "solution": "who",
+    "points": 10
+  },
+  {
+    "id": 26,
+    "title": "List Cron Jobs",
+    "description": "Show user's cron jobs",
+    "solution": "crontab -l",
+    "points": 10
+  },
+  {
+    "id": 27,
+    "title": "Edit Cron",
+    "description": "Edit cron table",
+    "solution": "crontab -e",
+    "points": 10
+  },
+  {
+    "id": 28,
+    "title": "Daily Backup",
+    "description": "Run backup.sh at 1AM daily",
+    "solution": "0 1 * * * /home/user/backup.sh",
+    "points": 10
+  }
+]

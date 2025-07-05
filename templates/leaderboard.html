@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaderboard</title>
+  <style>
+    body { background: #111; color: #0f0; font-family: monospace; padding: 20px }
+    a { color: cyan; }
+  </style>
+</head>
+<body>
+  <h1>🏆 Leaderboard</h1>
+  <ol>
+    {% for entry in leaderboard %}
+      <li>{{ entry.name }} – {{ entry.score }} pts</li>
+    {% endfor %}
+  </ol>
+  <a href="/">🔙 Back to Game</a>
+</body>
+</html>
