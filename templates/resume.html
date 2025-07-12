@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Game</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #0f0;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 25px;
+      font-size: 1.1em;
+      background: black;
+      color: lime;
+      border: 1px solid lime;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0f0;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>👋 Welcome back, {{ name }}!</h1>
+  <p>Your last score was: <strong>{{ score }}</strong></p>
+  <form method="post">
+    <button type="submit" name="choice" value="resume">▶ Resume Game</button>
+    <button type="submit" name="choice" value="restart">🔁 Start Fresh</button>
+  </form>
+</body>
+</html>

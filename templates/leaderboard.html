@@ -3,17 +3,109 @@
 <head>
   <title>Leaderboard</title>
   <style>
-    body { background: #111; color: #0f0; font-family: monospace; padding: 20px }
-    a { color: cyan; }
+    :root {
+      --bg-color: #111;
+      --text-color: #0f0;
+      --table-bg: #000;
+      --highlight: cyan;
+      --border-color: #0f0;
+    }
+
+    body.light {
+      --bg-color: #f0f0f0;
+      --text-color: #111;
+      --table-bg: #fff;
+      --highlight: #007bff;
+      --border-color: #333;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: monospace;
+      padding: 40px;
+      text-align: center;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: var(--table-bg);
+      border: 1px solid var(--border-color);
+      width: 80%;
+      max-width: 600px;
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 10px 20px;
+    }
+
+    th {
+      background-color: var(--highlight);
+      color: #000;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(0, 255, 0, 0.05);
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid var(--highlight);
+      color: var(--highlight);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      background: var(--highlight);
+      color: #000;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
-  <h1>🏆 Leaderboard</h1>
-  <ol>
+
+  <button class="toggle-btn" onclick="toggleTheme()">🌗 Toggle Mode</button>
+
+  <h1>🏅 Leaderboard</h1>
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Score</th>
+    </tr>
     {% for entry in leaderboard %}
-      <li>{{ entry.name }} – {{ entry.score }} pts</li>
-    {% endfor %}
-  </ol>
-  <a href="/">🔙 Back to Game</a>
+  <tr>
+    <td>#{{ loop.index }}</td>
+    <td>{{ entry.name }}</td>
+    <td>{{ entry.score }}</td>
+  </tr>
+{% endfor %}
+  </table>
+
+  <a href="/">🔁 Play Again</a>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+  </script>
 </body>
 </html>

@@ -1,64 +1,206 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DevOps Hero: Terminal Quest</title>
+  <title>DevOps Hero - Game</title>
   <style>
-    body { background:#111; color:#0f0; font-family:monospace; padding:20px }
-    .mission { border:1px solid #0f0; padding:20px; margin-top:20px }
-    input, button { background:black; color:lime; border:1px solid lime; padding:5px; font-family:monospace }
-    .error { color: red; margin-top: 10px }
-    .success { color: #0f0; margin-top: 10px }
+    :root {
+      --bg-color: #111;
+      --text-color: #0f0;
+      --box-bg: #000;
+      --button-bg: black;
+      --button-text: lime;
+      --border-color: #0f0;
+      --highlight-color: cyan;
+      --score-color: gold;
+    }
+
+    body.light {
+      --bg-color: #f9f9f9;
+      --text-color: #111;
+      --box-bg: #fff;
+      --button-bg: #eee;
+      --button-text: #111;
+      --border-color: #333;
+      --highlight-color: #0055cc;
+      --score-color: #ff8c00;
+    }
+
+    body {
+      font-family: monospace;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 40px;
+      text-align: center;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    .box {
+      background: var(--box-bg);
+      padding: 30px;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      display: inline-block;
+      max-width: 600px;
+      transition: opacity 0.5s ease;
+    }
+
+    h1 {
+      color: var(--text-color);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.1em;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 10px 25px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: 1px solid var(--button-text);
+      font-size: 1.1em;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    button:hover:enabled {
+      background-color: var(--highlight-color);
+      color: #fff;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    .score-box {
+      margin-top: 30px;
+      font-size: 18px;
+      color: var(--score-color);
+    }
+
+    #answer {
+      font-size: 1.8em;
+      margin-top: 20px;
+      color: var(--highlight-color);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
-  <h1>🧑‍💻 DevOps Hero: Terminal Quest</h1>
-  <div id="score">Score: 0</div>
-  <div><a href="/leaderboard" style="color: cyan;">🏅 View Leaderboard</a></div>
-  <div id="mission-container"></div>
+
+  <button class="toggle-btn" onclick="toggleTheme()">🌗 Toggle Mode</button>
+
+  <h1>🚀 DevOps Hero Missions</h1>
+
+  <div id="mission" class="box">
+    <h2 id="title">Loading mission...</h2>
+    <p id="description"></p>
+
+    <input type="text" id="command" placeholder="Enter your command here">
+    <button id="submitBtn" onclick="submitCommand()">Submit</button>
+
+    <div id="result" class="result"></div>
+    <div id="answer" class="hidden"></div>
+  </div>
+
+  <div class="score-box">⭐ Score: <span id="score">0</span></div>
 
   <script>
-    const missions = {{ missions|tojson }};
+    const missions = {{ missions | tojson }};
     let current = 0;
 
-    function renderMission() {
+    function loadMission() {
       if (current >= missions.length) {
         window.location.href = "/complete";
         return;
       }
 
-      const m = missions[current];
-      document.getElementById('mission-container').innerHTML = `
-        <div class="mission">
-          <h2>${m.title}</h2>
-          <p>${m.description}</p>
-          <input type="text" id="cmd" placeholder="Type command here" />
-          <button onclick="run()">Run</button>
-          <div id="out"></div>
-        </div>
-      `;
+      const missionBox = document.getElementById("mission");
+      missionBox.style.opacity = 0;
+
+      setTimeout(() => {
+        const mission = missions[current];
+        document.getElementById("title").textContent = mission.title;
+        document.getElementById("description").textContent = mission.description;
+        document.getElementById("command").value = "";
+        document.getElementById("command").disabled = false;
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("result").textContent = "";
+        document.getElementById("answer").textContent = "";
+        document.getElementById("answer").classList.add("hidden");
+        document.getElementById("command").classList.remove("hidden");
+        document.getElementById("submitBtn").classList.remove("hidden");
+
+        missionBox.style.opacity = 1;
+      }, 400);
     }
 
-    async function run() {
-      const cmd = document.getElementById('cmd').value.trim();
-      const res = await fetch('/verify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mission_id: missions[current].id, command: cmd })
+    function submitCommand() {
+      const command = document.getElementById("command").value;
+
+      fetch("/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          command: command,
+          mission_id: missions[current].id
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("score").textContent = data.score;
+
+        if (["success", "show_answer", "locked"].includes(data.result)) {
+          document.getElementById("command").disabled = true;
+          document.getElementById("submitBtn").disabled = true;
+
+          if (data.result === "show_answer" || data.result === "locked") {
+            document.getElementById("result").textContent = "";
+            document.getElementById("answer").textContent = "✅ " + data.message;
+            document.getElementById("answer").classList.remove("hidden");
+            document.getElementById("command").classList.add("hidden");
+            document.getElementById("submitBtn").classList.add("hidden");
+          } else {
+            document.getElementById("result").textContent = data.message;
+          }
+
+          setTimeout(() => {
+            current++;
+            loadMission();
+          }, 3000);
+        } else {
+          document.getElementById("result").textContent = data.message;
+        }
       });
-
-      const resp = await res.json();
-      document.getElementById('score').innerText = `Score: ${resp.score}`;
-
-      const out = document.getElementById('out');
-      if (resp.result === 'success') {
-        out.innerHTML = `<div class="success">${resp.message}</div>`;
-        setTimeout(() => { current++; renderMission(); }, 1500);
-      } else {
-        out.innerHTML = `<div class="error">${resp.message}</div>`;
-      }
     }
 
-    renderMission();
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+    }
+
+    loadMission();
   </script>
 </body>
 </html>

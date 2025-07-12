@@ -1,10 +1,62 @@
 <!doctype html>
 <html>
-  <body style="background:#111;color:#0f0;font-family:monospace;padding:20px">
+  <head>
+    <style>
+      body {
+        background: #111;
+        color: #0f0;
+        font-family: monospace;
+        padding: 20px;
+        text-align: center;
+      }
+
+      input {
+        padding: 10px;
+        border: none;
+        margin: 10px;
+        font-family: monospace;
+        background: #000;
+        color: #0f0;
+        border: 1px solid #0f0;
+      }
+
+      button {
+        padding: 10px 20px;
+        border: 1px solid #0f0;
+        background: transparent;
+        color: #0f0;
+        cursor: pointer;
+        font-family: monospace;
+        margin-top: 10px;
+      }
+
+      a.leaderboard-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: transparent;
+        border: 1px solid cyan;
+        color: cyan;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: 0.3s;
+      }
+
+      a.leaderboard-btn:hover {
+        background: cyan;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
     <h1>Welcome to DevOps Hero</h1>
     <form method="post">
       <input name="username" placeholder="Enter your name" required />
+      <br>
       <button type="submit">Start Game</button>
     </form>
+
+    <!-- Leaderboard button -->
+    <a href="/leaderboard" class="leaderboard-btn">🏆 View Leaderboard</a>
   </body>
 </html>

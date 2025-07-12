@@ -3,15 +3,39 @@
 <head>
   <title>DevOps Hero</title>
   <style>
-    body { background: #111; color: #0f0; font-family: monospace; text-align: center; padding-top: 100px; }
-    input, button { font-size: 1.2em; padding: 10px; background: black; color: lime; border: 1px solid lime; }
+    body {
+      background: #111;
+      color: #0f0;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+    input, button, a {
+      font-size: 1.2em;
+      padding: 10px;
+      background: black;
+      color: lime;
+      border: 1px solid lime;
+      margin: 5px;
+      text-decoration: none;
+    }
+    a:hover {
+      background: lime;
+      color: black;
+    }
   </style>
 </head>
 <body>
   <h1>🧑‍💻 Enter your name to begin:</h1>
-  <form method="post">
+  
+  <!-- ✅ Proper form -->
+  <form method="post" action="/">
     <input name="name" placeholder="Your name" required />
     <button type="submit">Start Game</button>
-  </form>
+  </form><br>
+
+  <!-- ✅ Leaderboard button -->
+  <a href="/leaderboard">🏆 View Leaderboard</a>
+
 </body>
 </html>
