@@ -38,5 +38,405 @@
     "solution": "cp notes.txt backup.txt",
     "points": 10,
     "hint": "Use cp source destination"
+  },
+   {
+    "id": 6,
+    "title": "Make Script Executable",
+    "description": "Make 'deploy.sh' executable",
+    "solution": "chmod +x deploy.sh",
+    "points": 10,
+    "hint": "Use chmod +x followed by script name"
+  },
+  {
+    "id": 7,
+    "title": "Change Owner",
+    "description": "Set owner of 'app.py' to 'ubuntu'",
+    "solution": "chown ubuntu app.py",
+    "points": 10,
+    "hint": "Use chown user file"
+  },
+  {
+    "id": 8,
+    "title": "View Permissions",
+    "description": "Check permissions of 'app.py'",
+    "solution": "ls -l app.py",
+    "points": 10,
+    "hint": "Use ls -l with file name"
+  },
+  {
+    "id": 9,
+    "title": "Remove Write",
+    "description": "Remove write access from 'config.json'",
+    "solution": "chmod -w config.json",
+    "points": 10,
+    "hint": "Use chmod -w to remove write"
+  },
+  {
+    "id": 10,
+    "title": "Set Read for All",
+    "description": "Give read to everyone for 'report.txt'",
+    "solution": "chmod a+r report.txt",
+    "points": 10,
+    "hint": "Use chmod a+r to add read for all"
+  },
+  {
+    "id": 11,
+    "title": "Restart Nginx",
+    "description": "Restart the nginx service",
+    "solution": "sudo systemctl restart nginx",
+    "points": 10,
+    "hint": "Use systemctl restart with sudo"
+  },
+  {
+    "id": 12,
+    "title": "Check Status",
+    "description": "Check nginx status",
+    "solution": "systemctl status nginx",
+    "points": 10,
+    "hint": "Use systemctl status service_name"
+  },
+  {
+    "id": 13,
+    "title": "View Running Procs",
+    "description": "Show top running processes",
+    "solution": "top",
+    "points": 10,
+    "hint": "Just type top and hit enter"
+  },
+  {
+    "id": 14,
+    "title": "Kill a PID",
+    "description": "Kill process ID 1234",
+    "solution": "kill 1234",
+    "points": 10,
+    "hint": "Use kill followed by PID"
+  },
+  {
+    "id": 15,
+    "title": "Check Logs",
+    "description": "View last 10 system logs",
+    "solution": "tail -n 10 /var/log/syslog",
+    "points": 10,
+    "hint": "Use tail -n with log file"
+  },
+  {
+    "id": 16,
+    "title": "Ping Google",
+    "description": "Ping 3 times",
+    "solution": "ping -c 3 google.com",
+    "points": 10,
+    "hint": "Use ping -c count domain"
+  },
+  {
+    "id": 17,
+    "title": "View IP",
+    "description": "Show system IP address",
+    "solution": "ip a",
+    "points": 10,
+    "hint": "Use ip a to view all addresses"
+  },
+  {
+    "id": 18,
+    "title": "Check Ports",
+    "description": "View listening ports",
+    "solution": "netstat -tuln",
+    "points": 10,
+    "hint": "Use netstat with -tuln flags"
+  },
+  {
+    "id": 19,
+    "title": "DNS Lookup",
+    "description": "Check IP of github.com",
+    "solution": "nslookup github.com",
+    "points": 10,
+    "hint": "Use nslookup with domain name"
+  },
+  {
+    "id": 20,
+    "title": "Curl Webpage",
+    "description": "Get page of example.com",
+    "solution": "curl example.com",
+    "points": 10,
+    "hint": "Use curl followed by URL"
+  },
+  {
+    "id": 21,
+    "title": "Check Disk Usage",
+    "description": "Human readable disk usage",
+    "solution": "df -h",
+    "points": 10,
+    "hint": "Use df -h for readable format"
+  },
+  {
+    "id": 22,
+    "title": "Check Memory",
+    "description": "View RAM usage",
+    "solution": "free -m",
+    "points": 10,
+    "hint": "Use free -m for MBs"
+  },
+  {
+    "id": 23,
+    "title": "Disk Space Directory",
+    "description": "Check folder size",
+    "solution": "du -sh *",
+    "points": 10,
+    "hint": "Use du -sh * to summarize"
+  },
+  {
+    "id": 24,
+    "title": "Uptime",
+    "description": "Show how long system is running",
+    "solution": "uptime",
+    "points": 10,
+    "hint": "Use uptime"
+  },
+  {
+    "id": 25,
+    "title": "Who is Logged In",
+    "description": "Show logged-in users",
+    "solution": "who",
+    "points": 10,
+    "hint": "Use who command"
+  },
+  {
+    "id": 26,
+    "title": "List Cron Jobs",
+    "description": "Show user's cron jobs",
+    "solution": "crontab -l",
+    "points": 10,
+    "hint": "Use crontab -l"
+  },
+  {
+    "id": 27,
+    "title": "Edit Cron",
+    "description": "Edit cron table",
+    "solution": "crontab -e",
+    "points": 10,
+    "hint": "Use crontab -e"
+  },
+  {
+    "id": 28,
+    "title": "Daily Backup",
+    "description": "Run backup.sh at 1AM daily",
+    "solution": "0 1 * * * /home/user/backup.sh",
+    "points": 10,
+    "hint": "Use cron timing format"
+  },
+  {
+    "id": 29,
+    "title": "Clear Terminal",
+    "description": "Clear the screen",
+    "solution": "clear",
+    "points": 10,
+    "hint": "Just type clear"
+  },
+  {
+    "id": 30,
+    "title": "Move File",
+    "description": "Move 'a.txt' to /tmp",
+    "solution": "mv a.txt /tmp",
+    "points": 10,
+    "hint": "Use mv file destination"
+  },
+  {
+    "id": 31,
+    "title": "Rename File",
+    "description": "Rename 'old.txt' to 'new.txt'",
+    "solution": "mv old.txt new.txt",
+    "points": 10,
+    "hint": "Use mv old new"
+  },
+  {
+    "id": 32,
+    "title": "Delete File",
+    "description": "Delete 'temp.txt'",
+    "solution": "rm temp.txt",
+    "points": 10,
+    "hint": "Use rm followed by file name"
+  },
+  {
+    "id": 33,
+    "title": "Remove Directory",
+    "description": "Delete 'old_folder' recursively",
+    "solution": "rm -r old_folder",
+    "points": 10,
+    "hint": "Use rm -r for folders"
+  },
+  {
+    "id": 34,
+    "title": "Show Current Dir",
+    "description": "Display current working directory",
+    "solution": "pwd",
+    "points": 10,
+    "hint": "Use pwd"
+  },
+  {
+    "id": 35,
+    "title": "Change Directory",
+    "description": "Go to /etc directory",
+    "solution": "cd /etc",
+    "points": 10,
+    "hint": "Use cd path"
+  },
+  {
+    "id": 36,
+    "title": "Search in File",
+    "description": "Search 'error' in logs.txt",
+    "solution": "grep 'error' logs.txt",
+    "points": 10,
+    "hint": "Use grep keyword file"
+  },
+  {
+    "id": 37,
+    "title": "Find File",
+    "description": "Find 'config.json' in /home",
+    "solution": "find /home -name config.json",
+    "points": 10,
+    "hint": "Use find path -name filename"
+  },
+  {
+    "id": 38,
+    "title": "Download File",
+    "description": "Download a file from URL",
+    "solution": "wget https://example.com/file.zip",
+    "points": 10,
+    "hint": "Use wget with URL"
+  },
+  {
+    "id": 39,
+    "title": "Unzip File",
+    "description": "Unzip 'archive.zip'",
+    "solution": "unzip archive.zip",
+    "points": 10,
+    "hint": "Use unzip with filename"
+  },
+  {
+    "id": 40,
+    "title": "Extract Tar",
+    "description": "Extract 'archive.tar.gz'",
+    "solution": "tar -xzf archive.tar.gz",
+    "points": 10,
+    "hint": "Use tar -xzf file"
+  },
+  {
+    "id": 41,
+    "title": "Create User",
+    "description": "Add user named 'john'",
+    "solution": "sudo adduser john",
+    "points": 10,
+    "hint": "Use adduser with sudo"
+  },
+  {
+    "id": 42,
+    "title": "Delete User",
+    "description": "Remove user 'john'",
+    "solution": "sudo deluser john",
+    "points": 10,
+    "hint": "Use deluser with sudo"
+  },
+  {
+    "id": 43,
+    "title": "Switch User",
+    "description": "Login as 'john'",
+    "solution": "su - john",
+    "points": 10,
+    "hint": "Use su - username"
+  },
+  {
+    "id": 44,
+    "title": "Check Groups",
+    "description": "See groups of user",
+    "solution": "groups",
+    "points": 10,
+    "hint": "Type groups"
+  },
+  {
+    "id": 45,
+    "title": "System Info",
+    "description": "Show OS details",
+    "solution": "uname -a",
+    "points": 10,
+    "hint": "Use uname -a"
+  },
+  {
+    "id": 46,
+    "title": "List Services",
+    "description": "View all services",
+    "solution": "systemctl list-units --type=service",
+    "points": 10,
+    "hint": "Use systemctl list-units"
+  },
+  {
+    "id": 47,
+    "title": "Update Packages",
+    "description": "Update package list",
+    "solution": "sudo apt update",
+    "points": 10,
+    "hint": "Use apt update with sudo"
+  },
+  {
+    "id": 48,
+    "title": "Upgrade System",
+    "description": "Upgrade installed packages",
+    "solution": "sudo apt upgrade",
+    "points": 10,
+    "hint": "Use apt upgrade with sudo"
+  },
+  {
+    "id": 49,
+    "title": "Check Open Ports",
+    "description": "Use ss command to view open ports",
+    "solution": "ss -tuln",
+    "points": 10,
+    "hint": "Use ss with -tuln"
+  },
+  {
+    "id": 50,
+    "title": "Set Hostname",
+    "description": "Set system hostname to 'devbox'",
+    "solution": "sudo hostnamectl set-hostname devbox",
+    "points": 10,
+    "hint": "Use hostnamectl with sudo"
+  },
+  {
+    "id": 51,
+    "title": "Reboot System",
+    "description": "Restart your machine",
+    "solution": "sudo reboot",
+    "points": 10,
+    "hint": "Use sudo reboot"
+  },
+  {
+    "id": 52,
+    "title": "Shutdown System",
+    "description": "Turn off system now",
+    "solution": "sudo shutdown now",
+    "points": 10,
+    "hint": "Use sudo shutdown"
+  },
+  {
+    "id": 53,
+    "title": "Check Date",
+    "description": "Display current date and time",
+    "solution": "date",
+    "points": 10,
+    "hint": "Use date"
+  },
+  {
+    "id": 54,
+    "title": "Set Date",
+    "description": "Set system date to 1 July 2025",
+    "solution": "sudo date -s '2025-07-01 10:00:00'",
+    "points": 10,
+    "hint": "Use date -s with sudo"
+  },
+  {
+    "id": 55,
+    "title": "Check Calendar",
+    "description": "Show current month calendar",
+    "solution": "cal",
+    "points": 10,
+    "hint": "Use cal"
   }
 ]
